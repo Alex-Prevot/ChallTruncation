@@ -7,10 +7,10 @@ import RegisterPage from 'pages/register';
 const Routes = (): JSX.Element => (
 	<BrowserRouter>
 		<RouterRoutes>
+			<Route path="/connect" element={<LoginPage />}/>
 			<Route path="/" element={<HomePage />}/>
 			<Route path="/register" element={<RegisterPage />}/>
 			<Route path="/login" element={<LoginPage />}/>
-			<Route path="*" element={<Navigate replace to="/" />} />
 		</RouterRoutes>
 	</BrowserRouter>
 );
