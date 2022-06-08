@@ -16,7 +16,7 @@ function Register() {
             password: PassWord
         };
         try {
-            const response = await axios.post("http://localhost:8080/create/user", {user})
+            const response = await axios.post("http://localhost:8080/create/user", user)
         } catch (error) {
             console.log(error);
         }

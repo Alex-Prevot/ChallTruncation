@@ -20,21 +20,6 @@ router.use((req, res, next) => {
 
 router.use(UserRoutes);
 
-router.get((req: any, res: any, next: any) => {
-  for (const [login, password] of Object.entries(UserRoutes)) {
-    console.log(`${login}: ${password}`);
-  }
-});
-//let allUser : User[] = JSON.parse(UserRoutes);
-
-
-router.use((req: any, res: any, next: any) => {
-  const error = new Error("Not found");
-  res.status(404).json({
-    message: error.message,
-  });
-});
-
 const httpServer = http.createServer(router);
 
 httpServer.listen(8080, () =>
