@@ -1,14 +1,37 @@
 import React from "react";
-import { Button, Center, VStack, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
+import axios from 'axios';
+import { Button, Center, VStack, Input, InputGroup, InputRightElement, Text, useToast} from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = (): JSX.Element => {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
     const [UserName, setUserName] = React.useState("");
     const [PassWord, setPassWord] = React.useState("");
+    const navigate = useNavigate();
+    const toast = useToast();
 
     const ConnectClick = async () => {
-
+        const user = {
+            username: UserName,
+            password: PassWord,
+        };
+        try {
+            const responce = await axios.post("http://localhost:8080/login/user", user);
+            if (responce.status === 200) {
+                navigate("/Connect");
+                toast({
+                    title: 'Account created.',
+                    description: "You are login",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true,
+                  })
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     const btn = (UserName === "" || PassWord === "") ?

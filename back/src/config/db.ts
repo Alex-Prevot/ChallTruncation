@@ -1,11 +1,11 @@
-const mysql = require('mysql2');
-require('dotenv').config();
+import mysql from 'mysql2'
+import { MYSQL_HOST, MYSQL_USER, MYSQL_ROOT_PASSWORD, MYSQL_DATABASE } from './config'
 
 const db = mysql.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_ROOT_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+    host: MYSQL_HOST,
+    user: MYSQL_USER,
+    password: MYSQL_ROOT_PASSWORD,
+    database: MYSQL_DATABASE
 });
 
 export default db;

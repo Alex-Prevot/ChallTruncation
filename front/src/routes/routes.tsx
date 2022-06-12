@@ -3,14 +3,15 @@ import { BrowserRouter, Navigate, Route, Routes as RouterRoutes } from 'react-ro
 import HomePage from 'pages/home';
 import LoginPage from 'pages/login';
 import RegisterPage from 'pages/register';
+import Connect from 'pages/connect';
 
 const Routes = (): JSX.Element => (
 	<BrowserRouter>
 		<RouterRoutes>
-			<Route path="/connect" element={<LoginPage />}/>
 			<Route path="/" element={<HomePage />}/>
 			<Route path="/register" element={<RegisterPage />}/>
 			<Route path="/login" element={<LoginPage />}/>
+			<Route path="/connect" element={<Connect />}/>
 		</RouterRoutes>
 	</BrowserRouter>
 );

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
-import { Button, Center, VStack, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
+import { Button, Center, VStack, Input, InputGroup, InputRightElement, Text, useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 
 function Register() {
@@ -9,6 +10,8 @@ function Register() {
     const [UserName, setUserName] = React.useState("");
     const [PassWord, setPassWord] = React.useState("");
     const [ConfirmPass, setConfirmPass] = React.useState("");
+    const navigate = useNavigate();
+    const toast = useToast();
 
     const ClickRegister = async () => {
         const user = {
@@ -16,7 +19,17 @@ function Register() {
             password: PassWord
         };
         try {
-            const response = await axios.post("http://localhost:8080/create/user", user)
+            const responce = await axios.post("http://localhost:8080/create/user", user);
+            if (responce.status === 200) {
+                navigate("/Login");
+                toast({
+                    title: 'Account created.',
+                    description: "We've created your account for you.",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true,
+                  })
+                }
         } catch (error) {
             console.log(error);
         }

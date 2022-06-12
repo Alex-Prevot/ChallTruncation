@@ -1,12 +1,10 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "sourceMap": true,
-        "target": "es6",
-        "outDir": "./build",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true
-    },
-    "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "preserveConstEnums": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2017",
+    }
 }
